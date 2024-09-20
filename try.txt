@@ -1,0 +1,34 @@
+data_temp = data.replace('У','*')
+data_temp = data_temp.replace(' ','У')
+data = data_temp.replace('*',' ')
+
+data_temp = data.replace('З','*')
+data_temp = data_temp.replace('О','З')
+data = data_temp.replace('*','О')
+
+data_temp = data.replace('Ю','*')
+data_temp = data_temp.replace('Т','Ю')
+data = data_temp.replace('*','Т')
+
+data_temp = data.replace('Э','*')
+data_temp = data_temp.replace('П','Э')
+data = data_temp.replace('*','П')
+
+#data = data.replace('А','Э')# 100%
+#data = data.replace("Ю",'Т')# 100%
+
+
+with open('belka.txt','r',encoding="utf8") as file:
+    data = file.read().replace('\n','')
+    print(data)
+
+data = sorted(data, key=lambda x: x.lower())
+
+print(len(data))
+
+i = 0
+
+while(i< len(data) - 1):
+    if(data[i] != data[i+1]):
+        print((str(data.count(data[i])) + " - " + data[i]))
+    i+=1
