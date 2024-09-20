@@ -8,7 +8,7 @@ import (
 
 func main() {
 	// Открываем файл
-	file, err := os.Open("belka.txt")
+	file, err := os.Open("data.txt")
 	if err != nil {
 		fmt.Println("Ошибка при открытии файла:", err)
 		return

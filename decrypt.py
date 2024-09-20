@@ -1,9 +1,9 @@
 def autoreplace_unique(text, replacements):
-    # Создаем временные метки для замены
-    temp_text = text
     for old_char, new_char in replacements.items():
-        temp_text = temp_text.replace(old_char, new_char)
-    return temp_text
+        # Заменяем только те символы, которые еще не были заменены
+        if old_char in text:
+            text = text.replace(old_char, new_char)
+    return text
 
 # Чтение данных из файла
 with open('data.txt', 'r', encoding="utf8") as file:
@@ -18,22 +18,20 @@ replacements_1 = {
 data = autoreplace_unique(data, replacements_1)
 
 # Сохраняем промежуточный результат
+with open('data_step1.txt', 'w', encoding="utf8") as file:
+    file.write(data)
 
 # Определяем вторые замены
 replacements_2 = {
-    " ": "1234"
+    " ": "й"
 }
-
-# Перед второй заменой временно заменим "М" на уникальный символ (например, "X")
-data = data.replace(" ", "*")
 
 # Выполняем вторую замену
 data = autoreplace_unique(data, replacements_2)
 
-# Заменяем временный символ обратно на "М"
-data = data.replace("*", " ")
-
-
+# Сохраняем финальный результат
+with open('data_final.txt', 'w', encoding="utf8") as file:
+    file.write(data)
 
 # Выводим финальный результат
 print(data)
