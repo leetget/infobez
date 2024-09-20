@@ -12,4 +12,4 @@ data = Autoreplace(data,'Ф','Э')
 data = Autoreplace(data,'Я','Т')
 data = Autoreplace(data,'П','О')
 
-print(data)
+print(data)##
